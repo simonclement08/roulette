@@ -7,6 +7,10 @@ h1 {
 	text-align: center;
 }
 
+.titre{
+	text-decoration: none;
+}
+
 .liste {
 	margin: 0 auto;
 	float: center;
@@ -51,4 +55,8 @@ footer {
 a, a:visited
 {
 	color:black;
+}
+
+#resetall {
+	background-color:red;
 }

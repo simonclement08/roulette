@@ -7,5 +7,3 @@
 		$bdd = new PDO('mysql:host=localhost;dbname=ROULETTE;charset=UTF8', $user, $mdp) or die(mysql_error());
 		return $bdd;
 	}
-
-?>
