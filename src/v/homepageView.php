@@ -104,5 +104,5 @@ echo ' Il y a <b>'.$nb.'</b> sur <b>'.$nb2.'</b> étudiants tirés au sort !<br 
 <?php
 $content = ob_get_clean();
 
-require 'template.php';
+require 'src/v/template.php';
 ?>

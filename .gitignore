@@ -1,2 +1,2 @@
-# Exclude everything in the folder except .template
-src/controller/bdd.php
+# Exclude every config file in the folder
+config/config*

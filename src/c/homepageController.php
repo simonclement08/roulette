@@ -1,13 +1,13 @@
 <?php
-require 'controller/bdd.php';
+require 'config/config.php';
 
 $bdd = connexion_bdd();
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $manager = new StudentManager($bdd);
 
-require 'controller/function.php';
-require 'view/homepageView.php';
+require 'src/m/function.php';
+require 'src/v/homepageView.php';
 
 //fonction RESET PASSAGE, pour seulement reset les passages et non les moyennes, absences etc...
 if (isset($_POST['Resetpass'])) {

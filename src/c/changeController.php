@@ -1,12 +1,12 @@
 <?php
-require 'controller/bdd.php';
+require 'config/config.php';
 
 $bdd = connexion_bdd();
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $manager = new StudentManager($bdd);
 
-require 'view/changeView.php';
+require 'src/v/changeView.php';
 
 if (isset($_POST['add'])) {
 	$donnees['surname'] = $_POST['addnom'];

@@ -1,7 +1,7 @@
 <?php
 // On enregistre notre autoload.
 function chargerClasse($classname){
-	require 'model/' . $classname.'.php';
+	require 'src/m/' . $classname.'.php';
 }
 spl_autoload_register('chargerClasse');
 
@@ -9,12 +9,12 @@ session_start();
 
 if (isset($_GET['action'])){
     if ($_GET['action'] == 'change'){
-        require 'controller/changeController.php';
+        require 'src/c/changeController.php';
     }
 	else{
-		require 'controller/homepageController.php';
+		require 'src/c/homepageController.php';
 	}
 }
 else {
-    require 'controller/homepageController.php';
+    require 'src/c/homepageController.php';
 }

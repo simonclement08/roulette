@@ -64,7 +64,7 @@ function Tirer($manager){
 
 function Pass($manager) {
 	//On prend un élève qui a le moins de passage à son compteur.
-	$ensemble = $manager->getDb('*',$_SESSION['select_classe'],'passage ASC','0,1');
+	$ensemble = $manager->getDb('*','class = "' . $_SESSION['select_classe'] . '"','passage ASC','0,1');
     $donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
 	$object = new Student($donnees);
     //On affiche son nom, prénom, section puis son nombre total de passage et sa moyenne.
