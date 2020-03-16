@@ -1,7 +1,5 @@
 <?php
-require 'config/config.php';
 
-$bdd = connexion_bdd();
 $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $manager = new StudentManager($bdd);

@@ -3,7 +3,7 @@
     <head>
         <meta charset="utf-8" />
         <title><?= $title ?></title>
-        <link rel="stylesheet" href="src/asset/css/style.css" />
+        <link rel="stylesheet" href="public/css/style.css" />
     </head>
         
     <body>
@@ -15,9 +15,5 @@
         </header>
 
         <?= $content ?>
-
-        <!-- Code HTML développé par Geoffrey KALUZNY -->
-
-        <script src="public/js/script.js"></script>
     </body>
 </html>

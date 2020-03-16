@@ -1,9 +1,19 @@
+## Structure folder
+
+- The index file on the root folder is the entry point
+
+- The root of the project holds a few directories
+  - /app – application folder
+  - /config – configuration files : data, connection to the database ...
+  - /doc - documentation
+  - /lib – libraries
+  - /public – files to be “downloaded” : CSS, JavaScripts and images ...
+
+
+
 ## GIT
 
-- **Don't share your personnal information :**
+**Don't share your personal information**
 
-To share config files in src/config/, their names need to be extent with .template (ex : connectBDD.php.template).
+- To share config files in config folder, look at .gitignore
 
-Then to modify locally with your personal information, copy the files without .template (ex : connectBDD.php), it will be ignored by git.
-
-For more information look at .gitignore in the project.

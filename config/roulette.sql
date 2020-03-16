@@ -1,30 +1,5 @@
--- phpMyAdmin SQL Dump
--- version 4.0.10deb1
--- http://www.phpmyadmin.net
---
--- Client: localhost
--- Généré le: Mar 17 Mai 2016 à 14:16
--- Version du serveur: 5.5.49-0ubuntu0.14.04.1
--- Version de PHP: 5.5.9-1ubuntu4.16
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
-
---
--- Base de données: `PROJECT_ROULETTE`
---
-
--- --------------------------------------------------------
-
---
--- Structure de la table `elevesio`
---
 
 CREATE TABLE IF NOT EXISTS `student` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -40,10 +15,6 @@ CREATE TABLE IF NOT EXISTS `student` (
   `average` int(10) NOT NULL DEFAULT 0,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=88 ;
-
---
--- Contenu de la table `elevesio`
---
 
 INSERT INTO `student` (`id`, `surname`, `firstname`, `class`, `section`, `bool`, `passage`, `absence`, `noteaddition`, `notetotal`, `average`) VALUES
 (1, 'Anneg', 'Romain', 'SIO2', 'SISR', 0, 0, 0, 0, 0, 0),
@@ -108,7 +79,3 @@ INSERT INTO `student` (`id`, `surname`, `firstname`, `class`, `section`, `bool`,
 (62, 'ROBERT', 'Julien', 'SIO1', 'SLAM', 0, 0, 0, 0, 0, 0),
 (63, 'SAIDI', 'Mohammed', 'SIO1', 'SISR', 0, 0, 0, 0, 0, 0),
 (64, 'TREILLE', 'Alexis', 'SIO1', 'SISR', 0, 0, 0, 0, 0, 0);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
