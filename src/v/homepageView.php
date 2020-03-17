@@ -1,7 +1,7 @@
 <?php
     $title = 'Tirage';
 
-    ob_start();
+	ob_start();	
 ?>
 
 <h1>SIO ROULETTE</h1>
@@ -85,13 +85,14 @@ echo ' Il y a <b>'.$nb.'</b> sur <b>'.$nb2.'</b> étudiants tirés au sort !<br 
     if(isset($_SESSION['select_classe']))
 	{
 		$liste = $manager->getDb('surname, firstname, section','bool=0 AND class="'. $_SESSION['select_classe'].'"');
-		if ($_SESSION['select_classe'] == "SIO1")
+		$select = $manager->getDb('DISTINCT class', null, 'class ASC');
+		$var = 0;
+		while ($donnees2 = $select->fetch(PDO::FETCH_BOTH))
 		{
-			echo "<script>document.getElementById('select_classe').selectedIndex='0'</script>";	//Focus sur la classe dans le menu déroulant
-		}
-        else
-        {
-			echo "<script>document.getElementById('select_classe').selectedIndex='1'</script>";
+			if($_SESSION['select_classe'] == $donnees2['class']){
+				echo "<script>document.getElementById('select_classe').selectedIndex='" . $var . "'</script>";	//Focus sur la classe dans le menu déroulant
+			}
+			$var = $var + 1;
 		}
 		while ($donnees2 = $liste->fetch(PDO::FETCH_BOTH))
 		{
