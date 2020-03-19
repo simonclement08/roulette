@@ -9,11 +9,15 @@ require 'src/v/homepageView.php';
 
 //fonction RESET PASSAGE, pour seulement reset les passages et non les moyennes, absences etc...
 if (isset($_POST['Resetpass'])) {
-	$manager->updateDb('bool = 0','class = "' . $_SESSION['select_classe'] . '"');
+	$where = 'class = "' . $_SESSION['select_classe'] . '"';
+	if($_SESSION['select_section'])$where = $where . 'AND section = "' . $_SESSION['select_section'] . '"';    
+	$manager->updateDb('bool = 0',$where);
 }
 //fonction RESET ALL, pour remettre à 0 tout (passages, moyennes, notes, absences etc...)
 if (isset($_POST['Resetall'])) {
-	$manager->updateDb('bool= 0, passage= 0, absence= 0, noteaddition= 0, notetotal= 0, average = 0','class = "' . $_SESSION['select_classe'] . '"');
+	$where = 'class = "' . $_SESSION['select_classe'] . '"';
+	if($_SESSION['select_section'])$where = $where . 'AND section = "' . $_SESSION['select_section'] . '"';    
+	$manager->updateDb('bool= 0, passage= 0, absence= 0, noteaddition= 0, notetotal= 0, average = 0',$where);
 }
 
 //Action lors du clique "A" pour les absences (ajouter +1 dans absence et -1 au passage dans la BDD vu que l'élève avait reçu un +1 lorsqu'il a été tiré au sort)
