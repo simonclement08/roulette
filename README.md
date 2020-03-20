@@ -6,15 +6,16 @@ ROULETTE est une application, conçu pour tirer au sort un élève. Cet utilitai
 
 ## INSTALLATION
 
-- Change right access to the project
-	chown -R www-data:www-data ROULETTE
-- Configure the BDD and connexion
-	- Import the script in your BDD : ROULETTE/config/ROULETTE.sql
-	- Copy and change the content of ROULETTE/config/ToConfig.php to ROULETTE/config/config.php
+```bash
+cd config
+bash install.sh
+```
 
 
 
 ## TROUBLESHOOTING
+
+
 
 
 ## CONTRIBUTORS
