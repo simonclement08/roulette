@@ -8,6 +8,7 @@ ROULETTE est une application, conçu pour tirer au sort un élève. Cet utilitai
 
 ```bash
 cd config
+# Run the script from the folder
 bash install.sh
 ```
 

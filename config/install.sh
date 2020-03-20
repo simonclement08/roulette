@@ -1,7 +1,12 @@
 #!/bin/sh
 
-echo -e "\n### Run this script from the script folder ###"
+echo -e "\n### Requirement ###"
+echo -e "Project, database and sql file name need to be the same\n"
+
 read -p "Press enter to continue or ctrl+c to quit"
+
+echo -e "\nChoose your project, database and sql file name"
+read name
 
 echo -e "\nChoose your OS [0]:\n0: LAMP\n1: MAMP"
 read os
@@ -14,18 +19,10 @@ echo -e "\n---SQL CONFIGURATION---"
 ##########
 ##########
 
-echo -e "\nThis script and the sql file need to be on the same folder"
-echo -e "The sql file name and the name of the database need to be the same"
-read -p "Press enter to continue or ctrl+c to quit"
-
-
 if [ $os -eq 0 ]; then 
 	echo -e "\nDB_HOST [localhost]:"
 	read host
 	host=${host:-localhost}
-
-	echo -e "\nDB_NAME:"
-	read name
 
 	echo -e "\nDB_USER [root]:"
 	read user
@@ -42,9 +39,6 @@ if [ $os -eq 0 ]; then
 elif [ $os -eq 1 ]; then
 	host="localhost"
 
-	echo -e "\nDB_NAME:"
-	read name
-
 	user="root"
 	pwd="root"
 
@@ -53,7 +47,7 @@ elif [ $os -eq 1 ]; then
 	$MYSQL $name < $name.sql
 fi
 
-echo -e "\nSQL done"
+echo -e "\nBDD created and data imported"
 
 ##########
 ##########
@@ -71,7 +65,7 @@ cat > config.php << EOF
 	define('DB_PWD',     '$pwd');
 EOF
 
-echo -e "\nPHP done"
+echo -e "\nconfig/config.php created"
 
 ##########
 ##########
@@ -80,14 +74,19 @@ echo -e "\n---RIGHTS CONFIGURATION---"
 ##########
 
 if [ $os -eq 0 ]; then
+	chown -R www-data:www-data /var/www/$name
 
-	chown -R www-data:www-data /var/www/
-
-	find /var/www/ -type d -exec chmod 750 {} \;
-	find /var/www/ -type f -exec chmod 640 {} \;
+	find /var/www/$name -type d -exec chmod 750 {} \;
+	find /var/www/$name -type f -exec chmod 640 {} \;
 
 elif [ $os -eq 1 ]; then
 	echo -e "\nNo configuration needed"
 fi
 
 echo -e "\nRIGHTS done"
+
+##########
+##########
+# echo -e "\n---FOR THIS PROJECT---"
+##########
+##########
