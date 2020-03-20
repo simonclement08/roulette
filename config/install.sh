@@ -83,8 +83,8 @@ if [ $os -eq 0 ]; then
 
 	chown -R www-data:www-data /var/www/
 
-	find /var/www/ -type d -exec chmod 750 {} ;
-	find /var/www/ -type f -exec chmod 640 {} ;
+	find /var/www/ -type d -exec chmod 750 {} \;
+	find /var/www/ -type f -exec chmod 640 {} \;
 
 elif [ $os -eq 1 ]; then
 	echo -e "\nNo configuration needed"
