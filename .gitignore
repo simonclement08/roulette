@@ -1,2 +1,5 @@
 # Exclude every config file in the folder
 config/config*
+
+public/upload/*
+!public/upload/.gitkeep
