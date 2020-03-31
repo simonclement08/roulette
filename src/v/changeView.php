@@ -85,7 +85,11 @@
 <!--              -->
 <!-- AJOUT CLASSE -->
 <!--              -->
-
+<?php
+if($test){
+    echo '<h3 class="warning">Aucune classe n\'a été ajouté, veuillez en ajouter une !</h3>';
+}
+?>
 <h3>Ajout classe</h3>
 
 <form method="post" action="#" enctype="multipart/form-data">

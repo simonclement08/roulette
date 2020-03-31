@@ -11,6 +11,10 @@ h1 {
 	text-decoration: none;
 }
 
+.warning{
+	color: red;
+}
+
 .liste {
 	margin: 0 auto;
 	float: center;
