@@ -6,6 +6,27 @@
 
 <a class="titre" href="index.php"><h1>SIO ROULETTE</h1></a>
 <br/><br/>
+<!--             -->
+<!--  AUTO FEED  -->
+<!--             -->
+
+<h3>Ajout d'un élève</h3>
+
+<span>CLIQUEZ AFIN D'AJOUTER DES VALEURS QUI SERVIRONT D'EXEMPLES</span>
+
+<br/><br/>
+
+<form method="POST" action="#">
+    
+    <input type="submit" value="Ajouter Des Exemples" name="autofeed">
+</form><br/>
+
+
+<br/><br/><br/><br/>
+
+<hr width="65%">
+<hr width="65%">
+
 
 <!--             -->
 <!-- AJOUT ELEVE -->

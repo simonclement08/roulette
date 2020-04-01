@@ -5,6 +5,11 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $manager = new StudentManager($bdd);
 
 require 'src/v/changeView.php';
+require 'src/m/function.php';
+
+if (isset($_POST['autofeed'])){
+	autofeed($manager,$datafeed);
+}
 
 if (isset($_POST['add'])) {
 	$donnees['surname'] = $_POST['addnom'];

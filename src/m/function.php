@@ -1,5 +1,9 @@
 <?php
 
+function autofeed($manager,$datafeed){
+	$manager->insertdata($datafeed);
+}
+
 function Tirer($manager){
 	//On récupère un élève qui n'a pas encore été tiré au sort avec la fonction RAND()
 	$where = 'bool = 0 AND class = "' . $_SESSION['select_classe'] . '"';
