@@ -4,7 +4,6 @@ class Student{
     private $_surname;
     private $_firstname;
     private $_class;
-    private $_section;
     private $_bool;
     private $_passage;
     private $_absence;
@@ -42,10 +41,6 @@ class Student{
     
     public function getClass(){
         return  $this->_class;
-    }
-    
-    public function getSection(){
-        return  $this->_section;
     }
     
     public function getBool(){
@@ -93,12 +88,6 @@ class Student{
     public function setClass($class){
         if ($class != ""){
             $this->_class = $class;
-        }
-    }
-
-    public function setSection($section){
-        if ($section != ""){
-            $this->_section = $section;
         }
     }
 

@@ -14,12 +14,9 @@
 			foreach($classe as $element)
 			{		
 				// on affiche la liste des différentes classes
-					
 				echo "<option name='classe_eleve' value=".$element['class'].">".$element['class']."</option>";	//Affichage des classes dans un menu déroulant
-				
-				//Intégration future des sections !!
-				
 			}
+
 			$_SESSION['select_classe'] = $_POST['select_classe'];		//On définit cette variable pour simplifier le code plus tard
 		?>
 	</select>
@@ -84,7 +81,7 @@ echo ' Il y a <b>'.$nb.'</b> sur <b>'.$nb2.'</b> étudiants tirés au sort !<br 
 	//Liste de tous les élèves sur la gauche de l'écran. (Les élèves déjà passés se retirent de la liste automatiquement)
     if(isset($_SESSION['select_classe']))
 	{
-		$liste = $manager->getDb('surname, firstname, section','bool=0 AND class="'. $_SESSION['select_classe'].'"');
+		$liste = $manager->getDb('surname, firstname','bool=0 AND class="'. $_SESSION['select_classe'].'"');
 		$select = $manager->getDb('DISTINCT class', null, 'class ASC');
 		$var = 0;
 		while ($donnees2 = $select->fetch(PDO::FETCH_BOTH))
@@ -96,7 +93,7 @@ echo ' Il y a <b>'.$nb.'</b> sur <b>'.$nb2.'</b> étudiants tirés au sort !<br 
 		}
 		while ($donnees2 = $liste->fetch(PDO::FETCH_BOTH))
 		{
-			echo  $donnees2['surname'] ." ". $donnees2['firstname'] ." (". $donnees2['section'].")<br/>" ;
+			echo  $donnees2['surname'] ." ". $donnees2['firstname'] . "<br/>" ;
 		}
 	}
 	?>

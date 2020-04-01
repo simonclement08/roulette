@@ -18,8 +18,8 @@ function Tirer($manager){
 	$_SESSION['student'] = $object;
     
     if ($donnees['bool'] == 0){
-		//On affiche son nom, prénom, section puis son nombre totale de passage et sa moyenne.
-		echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>". $object->getSection() . "<br/>";
+		//On affiche son nom, prénom puis son nombre totale de passage et sa moyenne.
+		echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>";
 		
 		$testpassage = $donnees['passage'];
 		$nbabsence = $donnees['absence'];
@@ -67,8 +67,8 @@ function Pass($manager) {
 	$ensemble = $manager->getDb('*','class = "' . $_SESSION['select_classe'] . '"','passage ASC','0,1');
     $donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
 	$object = new Student($donnees);
-    //On affiche son nom, prénom, section puis son nombre total de passage et sa moyenne.
-    echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>". $object->getSection() . "<br/>";
+    //On affiche son nom, prénom puis son nombre total de passage et sa moyenne.
+    echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>";
 	$testpassage = $object->getPassage();
 	$nbabsence = $object->getAbsence();
 	$moyenne = $object->getAverage();

@@ -21,7 +21,6 @@
     <label>Nom: </label><input type="text" name="addnom">
     <label>Prénom: </label><input type="text" name="addprenom" >
     <label>Classe </label><input type="text" name="addclasse">
-    <label>Section: </label><input type="text" name="addsection">
     <input type="submit" value="Ajouter" name="add">
 </form><br/>
 
