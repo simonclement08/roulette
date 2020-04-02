@@ -10,9 +10,9 @@
 <!--  AUTO FEED  -->
 <!--             -->
 
-<h3>Ajout d'un élève</h3>
+<h3>Ajout de valeurs exemples</h3>
 
-<span>CLIQUEZ AFIN D'AJOUTER DES VALEURS QUI SERVIRONT D'EXEMPLES</span>
+<span>Cliquez afin d'ajouter des valeurs qui serviront d'exemples</span>
 
 <br/><br/>
 

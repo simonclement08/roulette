@@ -2,6 +2,7 @@
 
 function autofeed($manager,$datafeed){
 	$manager->insertdata($datafeed);
+	echo "<h4 style='color:green;position:relative;'>Les exemples ont bien été ajoutés</h4>";
 }
 
 function Tirer($manager){

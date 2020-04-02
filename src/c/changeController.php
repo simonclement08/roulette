@@ -4,7 +4,7 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
 $manager = new StudentManager($bdd);
 
-require 'src/v/changeView.php';
+
 require 'src/m/function.php';
 
 if (isset($_POST['autofeed'])){
@@ -78,3 +78,4 @@ if(!empty($_POST['classup'])) {
 	$manager->deleteClasse($_POST['supp_classe']);
 	echo '<h4 style="color:green;">La classe a bien été supprimée de la BDD.</h4>';
 }
+require 'src/v/changeView.php';
