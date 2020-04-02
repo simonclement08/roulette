@@ -15,7 +15,6 @@ if (isset($_POST['add'])) {
 	$donnees['surname'] = $_POST['addnom'];
 	$donnees['firstname'] = $_POST['addprenom'];
 	$donnees['class'] = $_POST['addclasse'];
-	$donnees['section'] = $_POST['addsection'];
 	$donnees['bool'] = 0;
 	$donnees['passage'] = 0;
 	$donnees['absence'] = 0;
@@ -57,7 +56,6 @@ if(!empty($_POST['upload'])) {																// Verifie si le formulaire est en
 			$donnees['surname'] = $data[0];
 			$donnees['firstname'] = $data[1];
 			$donnees['class'] = $data[2];
-			$donnees['section'] = $data[3];
 			$donnees['bool'] = 0;
 			$donnees['passage'] = 0;
 			$donnees['absence'] = 0;

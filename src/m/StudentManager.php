@@ -19,14 +19,13 @@ class StudentManager{
         $surname = $objet->getSurname();
         $firstname = $objet->getFirstname();
         $class = $objet->getClass();
-        $section = $objet->getSection();
         $bool = $objet->getBool();
         $passage = $objet->getPassage();
         $absence = $objet->getAbsence();
         $noteaddition = $objet->getNoteaddition();
         $notetotal = $objet->getNotetotal();
         $average = $objet->getAverage();
-        $this->_db->exec("INSERT INTO student(surname,firstname,class,section,bool,passage,absence,noteaddition,notetotal,average) VALUES ('$surname', '$firstname', '$class', '$section',  $bool ,  $passage ,  $absence ,  $noteaddition , $notetotal , average )");
+        $this->_db->exec("INSERT INTO student(surname,firstname,class,bool,passage,absence,noteaddition,notetotal,average) VALUES ('$surname', '$firstname', '$class',  $bool ,  $passage ,  $absence ,  $noteaddition , $notetotal , average )");
     }
     
     public function delete(Student $objet){
@@ -68,7 +67,6 @@ class StudentManager{
         $surname = $objet->getSurname();
         $firstname = $objet->getFirstname();
         $class = $objet->getClass();
-        $section = $objet->getSection();
         $bool = $objet->getBool();
         $passage = $objet->getPassage();
         $absence = $objet->getAbsence();
@@ -76,7 +74,7 @@ class StudentManager{
         $notetotal = $objet->getNotetotal();
         $average = $objet->getAverage();
         // Prépare une requête de type UPDATE.
-        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , section =  '$section' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  $noteaddition , notetotal =  $notetotal , average = $average WHERE id = $id;");
+        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  $noteaddition , notetotal =  $notetotal , average = $average WHERE id = $id;");
     }
 
     public function updateDb($set,$where){

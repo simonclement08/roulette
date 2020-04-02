@@ -10,8 +10,21 @@
 
 	session_start();
 
-	if (isset($_GET['action'])){
-	    if ($_GET['action'] == 'change'){
+	$manager = new StudentManager($bdd);
+	$test = $manager->getDb('*');
+	$count = 0;
+	foreach($test as $test){
+		$count = $count + 1;
+	}
+	if($count == 0) {
+		$test = true;
+	}
+	else{
+		$test = false;
+	}
+
+	if (isset($_GET['action']) || $test){
+	    if ($test || $_GET['action'] == 'change'){
 	        require 'src/c/changeController.php';
 	    }
 		else{

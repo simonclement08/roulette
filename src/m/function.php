@@ -7,9 +7,7 @@ function autofeed($manager,$datafeed){
 
 function Tirer($manager){
 	//On récupère un élève qui n'a pas encore été tiré au sort avec la fonction RAND()
-	$where = 'bool = 0 AND class = "' . $_SESSION['select_classe'] . '"';
-	if($_SESSION['select_section'])$where = $where . 'AND section = "' . $_SESSION['select_section'] . '"';
-	$ensemble = $manager->getDb('*',$where,'RAND()','1');
+	$ensemble = $manager->getDb('*',"bool=0 AND class='".$_SESSION['select_classe']."'",'RAND()','1');
     $donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
 	//while ($datacom = $sqlcom->fetch(PDO::FETCH_ASSOC)) {
 	$object = new Student($donnees);
@@ -25,8 +23,8 @@ function Tirer($manager){
 	$_SESSION['student'] = $object;
     
     if ($donnees['bool'] == 0){
-		//On affiche son nom, prénom, section puis son nombre totale de passage et sa moyenne.
-		echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>". $object->getSection() . "<br/>";
+		//On affiche son nom, prénom puis son nombre totale de passage et sa moyenne.
+		echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>";
 		
 		$testpassage = $donnees['passage'];
 		$nbabsence = $donnees['absence'];
@@ -71,13 +69,11 @@ function Tirer($manager){
 
 function Pass($manager) {
 	//On prend un élève qui a le moins de passage à son compteur.
-	$where = 'class = "' . $_SESSION['select_classe'] . '"';
-	if($_SESSION['select_section'])$where = $where . 'AND section = "' . $_SESSION['select_section'] . '"';
-	$ensemble = $manager->getDb('*',$where,'passage ASC','0,1');
+	$ensemble = $manager->getDb('*','class = "' . $_SESSION['select_classe'] . '"','passage ASC','0,1');
     $donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
 	$object = new Student($donnees);
-    //On affiche son nom, prénom, section puis son nombre total de passage et sa moyenne.
-    echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>". $object->getSection() . "<br/>";
+    //On affiche son nom, prénom puis son nombre total de passage et sa moyenne.
+    echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>";
 	$testpassage = $object->getPassage();
 	$nbabsence = $object->getAbsence();
 	$moyenne = $object->getAverage();
@@ -120,18 +116,14 @@ function Pass($manager) {
 }
 
 function Moyless($manager) {
-	$where = 'notetotal > 0 AND class = "' . $_SESSION['select_classe'] . '"';
-	if($_SESSION['select_section'])$where = $where . 'AND section = "' . $_SESSION['select_section'] . '"';
-	$test = $manager->getDb('*',$where);
+	$test = $manager->getDb('*','notetotal > 0 AND class = "' . $_SESSION['select_classe'] . '"');
 	$test = $test->fetch();
 	if(!$test){
 		echo "Aucune note a été enregistrée</br></br>";	
 	}
 	else{
 		//On prend un élève qui a la moyenne la plus basse.
-		$where = "average = (SELECT MIN( average ) FROM student) AND class = '" . $_SESSION['select_classe'] . "'";
-		if($_SESSION['select_section'])$where = $where . 'AND section = "' . $_SESSION['select_section'] . '"';
-		$ensemble = $manager->getDb("average, GROUP_CONCAT('<br>', surname, ' ', firstname ORDER BY surname ) AS 'Eleves'",$where);
+		$ensemble = $manager->getDb("average, GROUP_CONCAT('<br>', surname, ' ', firstname ORDER BY surname ) AS 'Eleves'","average = (SELECT MIN( average ) FROM student) AND class = '" . $_SESSION['select_classe'] . "'");
 		while($donnees2 = $ensemble->fetch())
 		{
 			echo "<b>La plus petite moyenne est de :</b> ". $donnees2['average']." <i> ".$donnees2['Eleves']." </i><br/></br>";
@@ -140,18 +132,14 @@ function Moyless($manager) {
 }
 
 function Moyhigh($manager) {
-	$where = 'notetotal > 0 AND class = "' . $_SESSION['select_classe'] . '"';
-	if($_SESSION['select_section'])$where = $where . 'AND section = "' . $_SESSION['select_section'] . '"';
-	$test = $manager->getDb('*',$where);
+	$test = $manager->getDb('*','notetotal > 0 AND class = "' . $_SESSION['select_classe'] . '"');
 	$test = $test->fetch();
 	if(!$test){
 		echo "Aucune note a été enregistrée</br></br>";	
 	}
 	else{
 		//On prend un élève qui a la moyenne la plus haute.
-		$where = "average = (SELECT MAX( average ) FROM student) AND class = '" . $_SESSION['select_classe'] . "'";
-		if($_SESSION['select_section'])$where = $where . 'AND section = "' . $_SESSION['select_section'] . '"';
-		$ensemble = $manager->getDb("average, GROUP_CONCAT('<br>', surname, ' ', firstname ORDER BY surname ) AS 'Eleves'",$where);
+		$ensemble = $manager->getDb("average, GROUP_CONCAT('<br>', surname, ' ', firstname ORDER BY surname ) AS 'Eleves'","average = (SELECT MAX( average ) FROM student) AND class = '" . $_SESSION['select_classe'] . "'");
 		while($donnees2 = $ensemble->fetch())
 		{
 			echo "<b>La plus grande moyenne est de :</b> ". $donnees2['average']." <i> <a style=\"color:red\">".$donnees2['Eleves']."</a> </i><br/><br/>";
