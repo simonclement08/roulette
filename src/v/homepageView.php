@@ -38,22 +38,22 @@
 <?php
 
 //fonction tirer qui se situe dans function.php
-if(!empty($_POST['tirer'])) {
-    echo Tirer($manager);
+if(isset($_POST['tirer'])) {
+    Tirer($manager,$_POST['select_classe']);
 }
 
 //fonction Pass qui se situe dans function.php
-if(!empty($_POST['pass'])) {
-    echo Pass($manager);
+if(isset($_POST['pass'])) {
+    Pass($manager,$_POST['select_classe']);
 }
 
 //Appelle de la fonction Moyless dans le fichier action.php
 if (isset($_POST['petitm'])) {
-    echo Moyless($manager);
+    Moyless($manager);
 }
 //Appelle de la fonction Moyhigh dans le fichier action.php
 if (isset($_POST['grandm'])) {
-    echo Moyhigh($manager);
+    Moyhigh($manager);
 }
 
 //Requete pour récupérer le nombre d'élèves passés sur le nombre total d'élèves.

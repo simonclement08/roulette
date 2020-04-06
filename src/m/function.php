@@ -1,6 +1,6 @@
 <?php
 
-function Tirer($manager){
+function Tirer($manager,$classe){
 	//On récupère un élève qui n'a pas encore été tiré au sort avec la fonction RAND()
 	$ensemble = $manager->getDb('*',"bool=0 AND class='".$_SESSION['select_classe']."'",'RAND()','1');
     $donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
@@ -50,19 +50,23 @@ function Tirer($manager){
 		?>
 		<br/>
 		<form method="POST" >
+			<input type="hidden" value=<?=$classe?> name="select_classe">
 			<input type="submit" value="A" name="A">
 			<input type="submit" value="0" name="Nt0">
 			<input type="submit" value="1" name="Nt1">
 			<input type="submit" value="3" name="Nt3">
 			<br>
-			<input type="submit" value="laisser" name="laisser" style="display:none">
-			<input type="submit" value="retirer" name="retirer" style="display:none">
+			<?php 
+				if (isset($_POST['select_classe'])) {
+					$_SESSION['select_classe'] = $_POST['select_classe'];
+				}
+			?>
 		</form><br/>
 		<?php
     }
 }
 
-function Pass($manager) {
+function Pass($manager,$classe) {
 	//On prend un élève qui a le moins de passage à son compteur.
 	$ensemble = $manager->getDb('*','class = "' . $_SESSION['select_classe'] . '"','passage ASC','0,1');
     $donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
@@ -102,10 +106,16 @@ function Pass($manager) {
 	?>
 	<br/>
 	<form method="POST" >
+		<input type="hidden" value=<?=$classe?> name="select_classe">
 		<input type="submit" value="A" name="A">
 		<input type="submit" value="0" name="Nt0">
 		<input type="submit" value="1" name="Nt1">
 		<input type="submit" value="3" name="Nt3">
+		<?php 
+			if (isset($_POST['select_classe'])) {
+				$_SESSION['select_classe'] = $_POST['select_classe'];
+			}
+		?>
 	</form><br/>
 	<?php	
 }
