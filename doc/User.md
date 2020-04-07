@@ -57,6 +57,7 @@ Grâce à ce bouton et un format de fichier TXT spécifique, l’utilisateur pou
 
 Le fichier doit être au format .txt et se présenter sous la forme:
 
-*("nomeleve",prenomeleve","classe","option"),("nomeleve2",prenomeleve2","classe2","option2")...*
-
+("nomeleve",prenomeleve","classe"),
+("nomeleve2",prenomeleve2","classe2"),
 ...
+("nomeleveX",prenomeleveX","classeX")

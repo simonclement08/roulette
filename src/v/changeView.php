@@ -121,8 +121,8 @@ if($test){
     <span>Insérez votre fichier au format .txt contenant la classe souhaitée.<br/>
     Il doit se présenter sous la forme:<br/>
 
-    <i><p style="text-indent:20px">("nomeleve","prenomeleve","classe","option"),</p>
-    <p style="text-indent:20px">("nomeleve2","prenomeleve2","classe2","option2")</p></i></span>
+    <i><p style="text-indent:20px">("nomeleve","prenomeleve","classe"),</p>
+    <p style="text-indent:20px">("nomeleve2","prenomeleve2","classe2")</p></i></span>
 
     <span>Il est recommandé d'encoder le fichier texte en UTF-8.</span>
 
