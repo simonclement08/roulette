@@ -11,6 +11,10 @@ class StudentManager{
         $this->_db = $db;
     }
     
+    public function insertdata($scriptinsert){
+        $this->_db->exec($scriptinsert);
+    }
+    
     public function add(Student $objet){
         $surname = $objet->getSurname();
         $firstname = $objet->getFirstname();

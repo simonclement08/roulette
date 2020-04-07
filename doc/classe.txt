@@ -1,2 +1,0 @@
-("nomeleve","prenomeleve","classe","option"),
-("nomeleve2","prenomeleve2","classe2","option2")

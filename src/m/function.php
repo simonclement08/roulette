@@ -1,6 +1,11 @@
 <?php
 
-function Tirer($manager,$classe){
+function autofeed($manager,$datafeed){
+	$manager->insertdata($datafeed);
+	echo "<h4 style='color:green;position:relative;'>Les exemples ont bien été ajoutés</h4>";
+}
+
+function Tirer($manager, $classe){
 	//On récupère un élève qui n'a pas encore été tiré au sort avec la fonction RAND()
 	$ensemble = $manager->getDb('*',"bool=0 AND class='".$_SESSION['select_classe']."'",'RAND()','1');
     $donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
@@ -120,7 +125,7 @@ function Pass($manager,$classe) {
 	<?php	
 }
 
-function Moyless($manager) {
+function Moyless($manager, $classe) {
 	$test = $manager->getDb('*','notetotal > 0 AND class = "' . $_SESSION['select_classe'] . '"');
 	$test = $test->fetch();
 	if(!$test){

@@ -6,6 +6,27 @@
 
 <a class="titre" href="index.php"><h1>SIO ROULETTE</h1></a>
 <br/><br/>
+<!--             -->
+<!--  AUTO FEED  -->
+<!--             -->
+
+<h3>Ajout de valeurs exemples</h3>
+
+<span>Cliquez afin d'ajouter des valeurs qui serviront d'exemples</span>
+
+<br/><br/>
+
+<form method="POST" action="#">
+    
+    <input type="submit" value="Ajouter Des Exemples" name="autofeed">
+</form><br/>
+
+
+<br/><br/><br/><br/>
+
+<hr width="65%">
+<hr width="65%">
+
 
 <!--             -->
 <!-- AJOUT ELEVE -->
@@ -100,8 +121,8 @@ if($test){
     <span>Insérez votre fichier au format .txt contenant la classe souhaitée.<br/>
     Il doit se présenter sous la forme:<br/>
 
-    <i><p style="text-indent:20px">("nomeleve","prenomeleve","classe","option"),</p>
-    <p style="text-indent:20px">("nomeleve2","prenomeleve2","classe2","option2")</p></i></span>
+    <i><p style="text-indent:20px">("nomeleve","prenomeleve","classe"),</p>
+    <p style="text-indent:20px">("nomeleve2","prenomeleve2","classe2")</p></i></span>
 
     <span>Il est recommandé d'encoder le fichier texte en UTF-8.</span>
 
