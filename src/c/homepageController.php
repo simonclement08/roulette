@@ -5,7 +5,6 @@ $bdd->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 $manager = new StudentManager($bdd);
 
 require 'src/m/function.php';
-require 'src/v/homepageView.php';
 
 //fonction RESET PASSAGE, pour seulement reset les passages et non les moyennes, absences etc...
 if (isset($_POST['Resetpass'])) {
@@ -29,37 +28,40 @@ if(isset($_POST['A'])) {
 	
 	echo  "<br/>L'élève est noté absent.<br/>";
 }
-  
 
-  if(isset($_POST['Nt0'])) {
+
+if(isset($_POST['Nt0'])) {
 	//Action lors du clique "0" pour la note de 0. (On l'ajoute à la colonne addition de toutes les notes et +1 dans le nombre de note afin de faire la moyenne)
 	$object = $_SESSION['student'];
 	$object->setNoteaddition($object->getNoteaddition() + 0);
 	$object->setNotetotal($object->getNotetotal() + 1);
 	$object->setAverage($object->getNoteaddition()/$object->getNotetotal());
 	$manager->update($object);
-	
-	echo  "<br/>L'élève a obtenu la note de \"0\".<br/>";
-  }
 
-  if(isset($_POST['Nt1'])) {
+	echo  "<br/>L'élève a obtenu la note de \"0\".<br/>";
+}
+
+if(isset($_POST['Nt1'])) {
 	//Action lors du clique "1" pour la note 1. (On l'ajoute à la colonne addition de toutes les notes et +1 dans le nombre de note afin de faire la moyenne)
 	$object = $_SESSION['student'];
 	$object->setNoteaddition($object->getNoteaddition() + 1);
 	$object->setNotetotal($object->getNotetotal() + 1);
 	$object->setAverage($object->getNoteaddition()/$object->getNotetotal());
 	$manager->update($object);
-	
-	echo  "<br/>L'élève a obtenu la note de \"1\".<br/>";
-  }
 
-  if(isset($_POST['Nt3'])) {
+	echo  "<br/>L'élève a obtenu la note de \"1\".<br/>";
+}
+
+if(isset($_POST['Nt3'])) {
 	//Action lors du clique "3" pour la note 3. (On l'ajoute à la colonne addition de toutes les notes et +1 dans le nombre de note afin de faire la moyenne)
 	$object = $_SESSION['student'];
 	$object->setNoteaddition($object->getNoteaddition() + 3);
 	$object->setNotetotal($object->getNotetotal() + 1);
 	$object->setAverage($object->getNoteaddition()/$object->getNotetotal());
 	$manager->update($object);
-	
+
 	echo  "<br/>L'élève a obtenu la note de \"3\".<br/>";
-  }
+}
+
+require 'src/v/homepageView.php';
+

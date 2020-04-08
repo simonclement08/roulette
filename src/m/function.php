@@ -9,75 +9,80 @@ function Tirer($manager, $classe){
 	//On récupère un élève qui n'a pas encore été tiré au sort avec la fonction RAND()
 	$ensemble = $manager->getDb('*',"bool=0 AND class='".$_SESSION['select_classe']."'",'RAND()','1');
     $donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
-	//while ($datacom = $sqlcom->fetch(PDO::FETCH_ASSOC)) {
-	$object = new Student($donnees);
+	
+	if($donnees){
+		$object = new Student($donnees);
 
-	//on ajoute +1 pour dire qu'il a été tiré au sort.
-	$bool = $object->getBool();
-	$passage = $object->getPassage();
-	$object->setBool($bool + 1);
-	$object->setPassage($passage + 1);
+		//on ajoute +1 pour dire qu'il a été tiré au sort.
+		$bool = $object->getBool();
+		$passage = $object->getPassage();
+		$object->setBool($bool + 1);
+		$object->setPassage($passage + 1);
 
-	$manager->update($object);
+		$manager->update($object);
 
-	$_SESSION['student'] = $object;
-    
-    if ($donnees['bool'] == 0){
-		//On affiche son nom, prénom puis son nombre totale de passage et sa moyenne.
-		echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>";
+		$_SESSION['student'] = $object;
 		
-		$testpassage = $donnees['passage'];
-		$nbabsence = $donnees['absence'];
-		$nbmoyenne = $donnees['average'];
-		$nbtotale = $donnees['notetotal'];
+		if ($donnees['bool'] == 0){
+			//On affiche son nom, prénom puis son nombre totale de passage et sa moyenne.
+			echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>";
+			
+			$testpassage = $donnees['passage'];
+			$nbabsence = $donnees['absence'];
+			$nbmoyenne = $donnees['average'];
+			$nbtotale = $donnees['notetotal'];
 
-		if($testpassage == 0){
-			echo  "<br/><b>Nombre de passages :</b> - <br/>";
-		}
-		else{
-			echo  "<br/><b>Nombre de passages :</b> ". $donnees['passage'] ."<br/>";
-		}
+			if($testpassage == 0){
+				echo  "<br/><b>Nombre de passages :</b> - <br/>";
+			}
+			else{
+				echo  "<br/><b>Nombre de passages :</b> ". $donnees['passage'] ."<br/>";
+			}
 
-		if($nbabsence == 0){
-			echo  "<b>Absence(s) :</b> - <br/>";
-		}
-		else {
-			echo  "<b>Absence(s) :</b> ". $donnees['absence'] . "<br/>";
-		}
-		
-		if($nbmoyenne == 0 && $nbtotale == 0){
-			echo  "<b>Moyenne des réponses :</b> - <br/>";
-		}
-		else{
-			echo  "<b>Moyenne des réponses :</b> ". $donnees['average'] . " (" . $donnees['notetotal'] . ")<br/>";
-		}
+			if($nbabsence == 0){
+				echo  "<b>Absence(s) :</b> - <br/>";
+			}
+			else {
+				echo  "<b>Absence(s) :</b> ". $donnees['absence'] . "<br/>";
+			}
+			
+			if($nbmoyenne == 0 && $nbtotale == 0){
+				echo  "<b>Moyenne des réponses :</b> - <br/>";
+			}
+			else{
+				echo  "<b>Moyenne des réponses :</b> ". $donnees['average'] . " (" . $donnees['notetotal'] . ")<br/>";
+			}
 
-		?>
-		<br/>
-		<form method="POST" >
-			<input type="hidden" value=<?=$classe?> name="select_classe">
-			<input type="submit" value="A" name="A">
-			<input type="submit" value="0" name="Nt0">
-			<input type="submit" value="1" name="Nt1">
-			<input type="submit" value="3" name="Nt3">
-			<br>
-			<?php 
-				if (isset($_POST['select_classe'])) {
-					$_SESSION['select_classe'] = $_POST['select_classe'];
-				}
 			?>
-		</form><br/>
-		<?php
-    }
+			<br/>
+			<form method="POST" >
+				<input type="hidden" value=<?=$classe?> name="select_classe">
+				<input type="submit" value="A" name="A">
+				<input type="submit" value="0" name="Nt0">
+				<input type="submit" value="1" name="Nt1">
+				<input type="submit" value="3" name="Nt3">
+				<br>
+				<?php 
+					if (isset($_POST['select_classe'])) {
+						$_SESSION['select_classe'] = $_POST['select_classe'];
+					}
+				?>
+			</form><br/>
+			<?php
+		}
+	}
+	else{
+		echo "<p class='warning'> Tous les élèves de cette classe ont été tirer </p>";
+	}
 }
 
 function Pass($manager,$classe) {
 	//On prend un élève qui a le moins de passage à son compteur.
 	$ensemble = $manager->getDb('*','class = "' . $_SESSION['select_classe'] . '"','passage ASC','0,1');
-    $donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
+	$donnees = $ensemble->fetch(PDO::FETCH_ASSOC);
 	$object = new Student($donnees);
-    //On affiche son nom, prénom puis son nombre total de passage et sa moyenne.
-    echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>";
+	//On affiche son nom, prénom puis son nombre total de passage et sa moyenne.
+	echo  "<br/><b><a style=\"color:red\">". $object->getSurname() . " " . $object->getFirstname() . "</a></b><br/>";
 	$testpassage = $object->getPassage();
 	$nbabsence = $object->getAbsence();
 	$moyenne = $object->getAverage();
@@ -104,10 +109,10 @@ function Pass($manager,$classe) {
 		echo  "<b>Moyenne des réponses :</b> ". $moyenne . " (" . $nbtotale . "note(s) )<br/>";
 	}
 	
-    //On ajoute +1 pour dire qu'il est passé.
+	//On ajoute +1 pour dire qu'il est passé.
 	$id = $object->getId();
 	$object->setPassage($testpassage + 1);
-    $manager->update($object);
+	$manager->update($object);
 	?>
 	<br/>
 	<form method="POST" >
@@ -123,9 +128,10 @@ function Pass($manager,$classe) {
 		?>
 	</form><br/>
 	<?php	
+
 }
 
-function Moyless($manager, $classe) {
+function Moyless($manager) {
 	$test = $manager->getDb('*','notetotal > 0 AND class = "' . $_SESSION['select_classe'] . '"');
 	$test = $test->fetch();
 	if(!$test){
