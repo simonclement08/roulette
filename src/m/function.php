@@ -139,11 +139,17 @@ function Moyless($manager) {
 	}
 	else{
 		//On prend un élève qui a la moyenne la plus basse.
-		$ensemble = $manager->getDb("average, GROUP_CONCAT('<br>', surname, ' ', firstname ORDER BY surname ) AS 'Eleves'","average = (SELECT MIN( average ) FROM student) AND class = '" . $_SESSION['select_classe'] . "'");
+		$test = true;
+		$ensemble = $manager->getDb("average, surname, firstname","average = (SELECT MIN( average ) FROM student) AND class = '" . $_SESSION['select_classe'] . "'");
 		while($donnees2 = $ensemble->fetch())
 		{
-			echo "<b>La plus petite moyenne est de :</b> ". $donnees2['average']." <i> ".$donnees2['Eleves']." </i><br/></br>";
+			if($test === true){
+				echo "<b>La plus petite moyenne est de :</b> " . $donnees2['average'] . "<br>";
+				$test = false;
+			}
+			echo "<i> <a style=\"color:red\">" . $donnees2['surname'] . " " . $donnees2['firstname'] . "</a> </i><br/>";
 		}
+		echo "<br>";
 	}
 }
 
@@ -155,11 +161,17 @@ function Moyhigh($manager) {
 	}
 	else{
 		//On prend un élève qui a la moyenne la plus haute.
-		$ensemble = $manager->getDb("average, GROUP_CONCAT('<br>', surname, ' ', firstname ORDER BY surname ) AS 'Eleves'","average = (SELECT MAX( average ) FROM student) AND class = '" . $_SESSION['select_classe'] . "'");
+		$test = true;
+		$ensemble = $manager->getDb("average, surname, firstname","average = (SELECT MAX( average ) FROM student) AND class = '" . $_SESSION['select_classe'] . "'");
 		while($donnees2 = $ensemble->fetch())
 		{
-			echo "<b>La plus grande moyenne est de :</b> ". $donnees2['average']." <i> <a style=\"color:red\">".$donnees2['Eleves']."</a> </i><br/><br/>";
+			if($test === true){
+				echo "<b>La plus petite moyenne est de :</b> " . $donnees2['average'] . "<br>";
+				$test = false;
+			}
+			echo "<i> <a style=\"color:red\">" . $donnees2['surname'] . " " . $donnees2['firstname'] . "</a> </i><br/>";
 		}
+		echo "<br>";
 	}
 }
 ?>
