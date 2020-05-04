@@ -17,10 +17,10 @@ if (isset($_POST['add'])) {
 	$donnees['class'] = $_POST['addclasse'];
 	$donnees['bool'] = 0;
 	$donnees['passage'] = 0;
-	$donnees['absence'] = 0;
-	$donnees['noteaddition'] = 0;
-	$donnees['notetotal'] = 0;
-	$donnees['average'] = 0;
+	$donnees['absence'] = NULL;
+	$donnees['noteaddition'] = NULL;
+	$donnees['notetotal'] = NULL;
+	$donnees['average'] = NULL;
 	$object = new Student($donnees);
 	$manager->add($object);
 	echo '<h4 style="color:green;">L\'étudiant a bien été ajouté à la BDD.</h4>';
@@ -58,10 +58,10 @@ if(!empty($_POST['upload'])) {																// Verifie si le formulaire est en
 			$donnees['class'] = $data[2];
 			$donnees['bool'] = 0;
 			$donnees['passage'] = 0;
-			$donnees['absence'] = 0;
-			$donnees['noteaddition'] = 0;
-			$donnees['notetotal'] = 0;
-			$donnees['average'] = 0;
+			$donnees['absence'] = NULL;
+			$donnees['noteaddition'] = NULL;
+			$donnees['notetotal'] = NULL;
+			$donnees['average'] = NULL;
 			$object = new Student($donnees);
 			$manager->add($object);
 		}

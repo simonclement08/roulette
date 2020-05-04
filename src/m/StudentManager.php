@@ -74,7 +74,67 @@ class StudentManager{
         $notetotal = $objet->getNotetotal();
         $average = $objet->getAverage();
         // Prépare une requête de type UPDATE.
-        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  $noteaddition , notetotal =  $notetotal , average = $average WHERE id = $id;");
+        if($absence === null){
+            if($noteaddition === null){
+                if($notetotal === null){
+                    if($average === null){
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  null , noteaddition =  null , notetotal =  null , average = null WHERE id = $id;");
+                    }else{
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  null , noteaddition =  null , notetotal =  null , average = $average WHERE id = $id;");
+                    }
+                }else{
+                    if($average === null){
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  null , noteaddition =  null , notetotal =  $notetotal , average = null WHERE id = $id;");
+                    }else{
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  null , noteaddition =  null , notetotal =  $notetotal , average = $average WHERE id = $id;");
+                    }
+                }
+            }else{
+                if($notetotal === null){
+                    if($average === null){
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  null , noteaddition =  $noteaddition , notetotal =  null , average = null WHERE id = $id;");
+                    }else{
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  null , noteaddition =  $noteaddition , notetotal =  null , average = $average WHERE id = $id;");
+                    }
+                }else{
+                    if($average === null){
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  null , noteaddition =  $noteaddition , notetotal =  $notetotal , average = null WHERE id = $id;");
+                    }else{
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  null , noteaddition =  $noteaddition , notetotal =  $notetotal , average = $average WHERE id = $id;");
+                    }
+                }
+            }
+        }else{
+            if($noteaddition === null){
+                if($notetotal === null){
+                    if($average === null){
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  null , notetotal =  null , average = null WHERE id = $id;");
+                    }else{
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  null , notetotal =  null , average = $average WHERE id = $id;");
+                    }
+                }else{
+                    if($average === null){
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  null , notetotal =  $notetotal , average = null WHERE id = $id;");
+                    }else{
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  null , notetotal =  $notetotal , average = $average WHERE id = $id;");
+                    }
+                }
+            }else{
+                if($notetotal === null){
+                    if($average === null){
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  $noteaddition , notetotal =  null , average = null WHERE id = $id;");
+                    }else{
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  $noteaddition , notetotal =  null , average = $average WHERE id = $id;");
+                    }
+                }else{
+                    if($average === null){
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  $noteaddition , notetotal =  $notetotal , average = null WHERE id = $id;");
+                    }else{
+                        $this->_db->exec("UPDATE student SET surname =  '$surname'  , firstname =  '$firstname' , class =  '$class' , bool =  $bool , passage =  $passage , absence =  $absence , noteaddition =  $noteaddition , notetotal =  $notetotal , average = $average WHERE id = $id;");
+                    }
+                }
+            }
+        }
     }
 
     public function updateDb($set,$where){

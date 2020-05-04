@@ -5,9 +5,9 @@ CREATE TABLE IF NOT EXISTS `student` (
   `class` varchar(10) NOT NULL,
   `bool` tinyint(1) NOT NULL DEFAULT 0,
   `passage` int(5) NOT NULL DEFAULT 0,
-  `absence` int(2) NOT NULL DEFAULT 0,
-  `noteaddition` int(100) NOT NULL DEFAULT 0,
-  `notetotal` int(10) NOT NULL DEFAULT 0,
-  `average` int(10) NOT NULL DEFAULT 0,
+  `absence` int(2) DEFAULT NULL,
+  `noteaddition` int(100) DEFAULT NULL,
+  `notetotal` int(10) DEFAULT NULL,
+  `average` int(10) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1;

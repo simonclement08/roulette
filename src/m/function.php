@@ -13,14 +13,6 @@ function Tirer($manager, $classe){
 	if($donnees){
 		$object = new Student($donnees);
 
-		//on ajoute +1 pour dire qu'il a été tiré au sort.
-		$bool = $object->getBool();
-		$passage = $object->getPassage();
-		$object->setBool($bool + 1);
-		$object->setPassage($passage + 1);
-
-		$manager->update($object);
-
 		$_SESSION['student'] = $object;
 		
 		if ($donnees['bool'] == 0){
@@ -39,14 +31,14 @@ function Tirer($manager, $classe){
 				echo  "<br/><b>Nombre de passages :</b> ". $donnees['passage'] ."<br/>";
 			}
 
-			if($nbabsence == 0){
+			if($nbabsence == NULL){
 				echo  "<b>Absence(s) :</b> - <br/>";
 			}
 			else {
 				echo  "<b>Absence(s) :</b> ". $donnees['absence'] . "<br/>";
 			}
 			
-			if($nbmoyenne == 0 && $nbtotale == 0){
+			if($nbmoyenne == NULL && $nbtotale == NULL){
 				echo  "<b>Moyenne des réponses :</b> - <br/>";
 			}
 			else{
@@ -95,14 +87,14 @@ function Pass($manager,$classe) {
 		echo  "<br/><b>Nombre de passages :</b> ". $testpassage ."<br/>";
 	}
 
-	if ($nbabsence == 0) {
+	if ($nbabsence == NULL) {
 		echo  "<b>Absence(s) :</b> - <br/>";
 	}
 	else{
 		echo  "<b>Absence(s) :</b> ". $nbabsence . "<br/>";
 	}
 	
-	if ($moyenne == 0 && $nbtotale == 0) {
+	if ($moyenne == NULL && $nbtotale == NULL) {
 		echo  "<b>Moyenne des réponses :</b> - <br/>";
 	}
 	else{
