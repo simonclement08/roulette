@@ -12,18 +12,20 @@ if (isset($_POST['Resetpass'])) {
 }
 //fonction RESET ALL, pour remettre à 0 tout (passages, moyennes, notes, absences etc...)
 if (isset($_POST['Resetall'])) {
-	$manager->updateDb('bool= 0, passage= 0, absence= 0, noteaddition= 0, notetotal= 0, average = 0','class = "' . $_SESSION['select_classe'] . '"');
+	$manager->updateDb('bool= 0, passage= 0, absence= NULL, noteaddition= NULL, notetotal= NULL, average = NULL','class = "' . $_SESSION['select_classe'] . '"');
 }
 
 //Action lors du clique "A" pour les absences (ajouter +1 dans absence et -1 au passage dans la BDD vu que l'élève avait reçu un +1 lorsqu'il a été tiré au sort)
 if(isset($_POST['A'])) {
 	$object = $_SESSION['student'];
+
 	$absence = $object->getAbsence();
-	$passage = $object->getPassage();
-	$bool = $object->getBool();
+
+	if($absence === NULL){
+		$asbence = 0;
+	}
+
 	$object->setAbsence($absence + 1);
-	$object->setPassage($passage - 1);
-	$object->setBool($bool - 1);
 	$manager->update($object);
 	
 	echo  "<br/>L'élève est noté absent.<br/>";
@@ -33,8 +35,25 @@ if(isset($_POST['A'])) {
 if(isset($_POST['Nt0'])) {
 	//Action lors du clique "0" pour la note de 0. (On l'ajoute à la colonne addition de toutes les notes et +1 dans le nombre de note afin de faire la moyenne)
 	$object = $_SESSION['student'];
-	$object->setNoteaddition($object->getNoteaddition() + 0);
-	$object->setNotetotal($object->getNotetotal() + 1);
+
+	//on ajoute +1 pour dire qu'il a été tiré au sort.
+	$bool = $object->getBool();
+	$passage = $object->getPassage();
+	$object->setBool($bool + 1);
+	$object->setPassage($passage + 1);
+
+	$noteaddition = $object->getNoteaddition();
+	$notetotal = $object->getNotetotal();
+
+	if($noteaddition === NULL){
+		$noteaddition = 0;
+	}
+	if($notetotal === NULL){
+		$notetotal = 0;
+	}
+
+	$object->setNoteaddition($noteaddition + 0);
+	$object->setNotetotal($notetotal + 1);
 	$object->setAverage($object->getNoteaddition()/$object->getNotetotal());
 	$manager->update($object);
 
@@ -44,8 +63,25 @@ if(isset($_POST['Nt0'])) {
 if(isset($_POST['Nt1'])) {
 	//Action lors du clique "1" pour la note 1. (On l'ajoute à la colonne addition de toutes les notes et +1 dans le nombre de note afin de faire la moyenne)
 	$object = $_SESSION['student'];
-	$object->setNoteaddition($object->getNoteaddition() + 1);
-	$object->setNotetotal($object->getNotetotal() + 1);
+
+	//on ajoute +1 pour dire qu'il a été tiré au sort.
+	$bool = $object->getBool();
+	$passage = $object->getPassage();
+	$object->setBool($bool + 1);
+	$object->setPassage($passage + 1);
+
+	$noteaddition = $object->getNoteaddition();
+	$notetotal = $object->getNotetotal();
+
+	if($noteaddition === NULL){
+		$noteaddition = 0;
+	}
+	if($notetotal === NULL){
+		$notetotal = 0;
+	}
+
+	$object->setNoteaddition($noteaddition + 1);
+	$object->setNotetotal($notetotal + 1);
 	$object->setAverage($object->getNoteaddition()/$object->getNotetotal());
 	$manager->update($object);
 
@@ -55,8 +91,25 @@ if(isset($_POST['Nt1'])) {
 if(isset($_POST['Nt3'])) {
 	//Action lors du clique "3" pour la note 3. (On l'ajoute à la colonne addition de toutes les notes et +1 dans le nombre de note afin de faire la moyenne)
 	$object = $_SESSION['student'];
-	$object->setNoteaddition($object->getNoteaddition() + 3);
-	$object->setNotetotal($object->getNotetotal() + 1);
+
+	//on ajoute +1 pour dire qu'il a été tiré au sort.
+	$bool = $object->getBool();
+	$passage = $object->getPassage();
+	$object->setBool($bool + 1);
+	$object->setPassage($passage + 1);
+
+	$noteaddition = $object->getNoteaddition();
+	$notetotal = $object->getNotetotal();
+
+	if($noteaddition === NULL){
+		$noteaddition = 0;
+	}
+	if($notetotal === NULL){
+		$notetotal = 0;
+	}
+
+	$object->setNoteaddition($noteaddition + 3);
+	$object->setNotetotal($notetotal + 1);
 	$object->setAverage($object->getNoteaddition()/$object->getNotetotal());
 	$manager->update($object);
 

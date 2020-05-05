@@ -103,26 +103,26 @@ class Student{
         }
     }
 
-    public function setAbsence(int $absence){
-        if (is_int($absence)){
+    public function setAbsence($absence){
+        if (is_int($absence) or NULL){
             $this->_absence = $absence;
         }
     }
 
-    public function setNoteaddition(int $noteaddition){
-        if (is_int($noteaddition)){
+    public function setNoteaddition($noteaddition){
+        if (is_int($noteaddition) or NULL){
             $this->_noteaddition = $noteaddition;
         }
     }
 
-    public function setNotetotal(int $notetotal){
-        if (is_int($notetotal)){
+    public function setNotetotal($notetotal){
+        if (is_int($notetotal) or NULL){
             $this->_notetotal = $notetotal;
         }
     }
 
-    public function setAverage(int $average){
-        if (is_int($average)){
+    public function setAverage($average){
+        if (is_int($average) or NULL){
             $this->_average = $average;
         }
     }
