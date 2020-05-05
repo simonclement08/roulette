@@ -6,11 +6,17 @@ ROULETTE est une application, conçu pour tirer au sort un élève. Cet utilitai
 
 ## INSTALLATION
 
+### Simplest way
+
 ```bash
-cd config
 # Run the script from the folder
+cd config
 bash install.sh
 ```
+
+### Manually
+
+In config folder, rename _config.php to config.php and change the values inside.
 
 
 
