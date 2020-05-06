@@ -100,12 +100,8 @@ function Pass($manager,$classe) {
 	else{
 		echo  "<b>Moyenne des réponses :</b> ". $moyenne . " (" . $nbtotale . "note(s) )<br/>";
 	}
-	
-	//On ajoute +1 pour dire qu'il est passé.
-	$id = $object->getId();
-	$object->setPassage($testpassage + 1);
-	$manager->update($object);
 	?>
+	
 	<br/>
 	<form method="POST" >
 		<input type="hidden" value=<?=$classe?> name="select_classe">
