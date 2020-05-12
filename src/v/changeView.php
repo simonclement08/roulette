@@ -19,6 +19,7 @@
 <form method="POST" action="#">
     
     <input type="submit" value="Ajouter Des Exemples" name="autofeed">
+
 </form><br/>
 
 
@@ -119,7 +120,7 @@ if($test){
     <br/><br/>
 
     <span>Insérez votre fichier au format .txt contenant la classe souhaitée.<br/>
-    Il doit se présenter sous la forme:<br/>
+    Il doit se présenter sous la forme :<br/>
 
     <i><p style="text-indent:20px">("nomeleve","prenomeleve","classe"),</p>
     <p style="text-indent:20px">("nomeleve2","prenomeleve2","classe2")</p></i></span>
