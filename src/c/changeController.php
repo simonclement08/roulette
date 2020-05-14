@@ -77,3 +77,23 @@ if(!empty($_POST['classup'])) {
 	echo '<h4 style="color:green;">La classe a bien été supprimée de la BDD.</h4>';
 }
 require 'src/v/changeView.php';
+if($test && !isset($_POST['1']) && !isset($_POST['autofeed'])){
+	require 'src/v/ajoutClasseView.php';
+}
+if(isset($_POST['1']) || isset($_POST['autofeed'])){	
+	include 'src/v/ajoutValeursView.php';
+}
+if(isset($_POST['2']) && $test === false || isset($_POST['add'])){
+	require 'src/v/ajoutEtudiantView.php';
+}
+if(isset($_POST['3']) && $test === false || !empty($_POST['choix'])){
+	require 'src/v/supprEtudiantView.php';
+}
+if(isset($_POST['4']) && $test === false){
+	require 'src/v/ajoutClasseView.php';
+}
+if(isset($_POST['5']) && $test === false){
+	require 'src/v/supprClasseView.php';
+}
+
+require 'src/v/footerChangeView.php';
