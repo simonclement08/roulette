@@ -25,7 +25,7 @@ class StudentManager{
         $noteaddition = $objet->getNoteaddition();
         $notetotal = $objet->getNotetotal();
         $average = $objet->getAverage();
-        $this->_db->exec("INSERT INTO student(surname,firstname,class,bool,passage,absence,noteaddition,notetotal,average) VALUES ('$surname', '$firstname', '$class',  $bool ,  $passage ,  $absence ,  $noteaddition , $notetotal , average )");
+        $this->_db->exec("INSERT INTO student(surname,firstname,class,bool,passage) VALUES ('$surname', '$firstname', '$class',  $bool ,  $passage )");
     }
     
     public function delete(Student $objet){
