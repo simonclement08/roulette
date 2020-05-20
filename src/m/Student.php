@@ -74,19 +74,19 @@ class Student{
     }
 
     public function setSurname($surname){
-        if ($surname != ""){
+        if ($surname !== ""){
             $this->_surname = $surname;
         }
     }
 
     public function setFirstname($firstname){
-        if ($firstname != ""){
+        if ($firstname !== ""){
             $this->_firstname = $firstname;
         }
     }
 
     public function setClass($class){
-        if ($class != ""){
+        if ($class !== ""){
             $this->_class = $class;
         }
     }
