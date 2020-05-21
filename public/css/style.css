@@ -33,7 +33,11 @@ h1 {
 	height: 250px;
 	margin-left: 50px;
 }
-
+.changebutton{
+	width: 100%;
+	background-color: #504e4d;
+	border-radius: 0px;
+}
 button {
 	border-radius: 10px;
 	background-color: #000;
@@ -64,3 +68,19 @@ a, a:visited
 #resetall {
 	background-color:red;
 }
+table, td {
+	
+	text-align: center;
+	
+}
+
+table {
+	width:60%;
+	margin-left: 20%;
+}
+
+td {
+	width: 20%;
+	background-color: #504e4d;
+}
+
