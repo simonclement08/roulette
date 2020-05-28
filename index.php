@@ -16,7 +16,7 @@
 	foreach($test as $test){
 		$count = $count + 1;
 	}
-	if($count == 0) {
+	if($count === 0) {
 		$test = true;
 	}
 	else{

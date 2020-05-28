@@ -91,8 +91,8 @@ class Student{
         }
     }
 
-    public function setBool(int $bool){
-        if (is_int($bool)){
+    public function setBool(bool $bool){
+        if (is_bool($bool)){
             $this->_bool = $bool;
         }
     }
@@ -103,8 +103,8 @@ class Student{
         }
     }
 
-    public function setAbsence($absence){
-        if (is_int($absence) or NULL){
+    public function setAbsence(bool $absence){
+        if (is_bool($absence)){
             $this->_absence = $absence;
         }
     }

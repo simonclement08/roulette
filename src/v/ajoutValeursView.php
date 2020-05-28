@@ -9,12 +9,11 @@
 <br/><br/>
 
 <form method="POST" action="#">
-    
     <input type="submit" value="Ajouter Des Exemples" name="autofeed">
 </form><br/>
 
 
 <br/><br/><br/><br/>
 
-<hr width="65%">
-<hr width="65%">
+<hr>
+<hr>

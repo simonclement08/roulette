@@ -14,7 +14,7 @@
         $sel_classe = $manager->getDb('DISTINCT class',null,'class ASC');
 
         while ($don_classe = $sel_classe->fetch()) {
-            echo '<option value="'.$don_classe['class'].'">'.$don_classe['class'].'</option>';
+            echo '<option value="' . $don_classe['class'] . '">' . $don_classe['class'] . '</option>';
         }
         ?>
     </select>
@@ -24,5 +24,5 @@
 
 <br/><br/><br/><br/>
 
-<hr width="65%">
-<hr width="65%">
+<hr>
+<hr>

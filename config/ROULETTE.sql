@@ -5,7 +5,7 @@ CREATE TABLE IF NOT EXISTS `student` (
   `class` varchar(10) NOT NULL,
   `bool` tinyint(1) NOT NULL DEFAULT 0,
   `passage` int(5) NOT NULL DEFAULT 0,
-  `absence` int(2) DEFAULT NULL,
+  `absence` tinyint(1) NOT NULL DEFAULT 0,
   `noteaddition` int(100) DEFAULT NULL,
   `notetotal` int(10) DEFAULT NULL,
   `average` int(10) DEFAULT NULL,

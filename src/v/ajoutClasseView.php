@@ -17,8 +17,8 @@ if($test){
     <span>Insérez votre fichier au format .txt contenant la classe souhaitée.<br/>
     Il doit se présenter sous la forme:<br/>
 
-    <i><p style="text-indent:20px">("nomeleve","prenomeleve","classe"),</p>
-    <p style="text-indent:20px">("nomeleve2","prenomeleve2","classe2")</p></i></span>
+    <i><p class="format">("nomeleve","prenomeleve","classe"),</p>
+    <p class="format">("nomeleve2","prenomeleve2","classe2")</p></i></span>
 
     <span>Il est recommandé d'encoder le fichier texte en UTF-8.</span>
 
@@ -29,5 +29,5 @@ if($test){
 
 <br/><br/><br/><br/>
 
-<hr width="65%">
-<hr width="65%">
+<hr>
+<hr>

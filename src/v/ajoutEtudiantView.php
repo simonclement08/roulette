@@ -18,5 +18,5 @@
 
 <br/><br/><br/><br/>
 
-<hr width="65%">
-<hr width="65%">
+<hr>
+<hr>

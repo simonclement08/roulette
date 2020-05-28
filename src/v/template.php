@@ -9,9 +9,7 @@
     <body>
 
         <header>
-            <div>
-                <h1>MONGE ROULETTE</h1>
-            </div>
+            <h1>ROULETTE</h1>
         </header>
 
         <?= $content ?>

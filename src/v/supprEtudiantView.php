@@ -16,7 +16,7 @@
         $sel_classe = $manager->getDb('DISTINCT class',null,'class ASC');
 
         while ($don_classe = $sel_classe->fetch()) {
-            echo '<option value="'.$don_classe['class'].'">'.$don_classe['class'].'</option>';
+            echo '<option value="' . $don_classe['class'] . '">'.$don_classe['class'] . '</option>';
         }
 
         ?>
@@ -30,12 +30,12 @@
     <select name="listemod">
         <?php
         if (!empty($_POST['choix'])) {
-            $liste = $manager->getDb('*','class="'.$_POST['sel_classe'].'"');
+            $liste = $manager->getDb('*','class="' . $_POST['sel_classe'] . '"');
             while ($donnees2 = $liste->fetch()) {
                 $objet = new Student($donnees2);
                 $object = serialize($objet);
                 $object = urlencode($object);
-                echo  '<option value="'. $object .'"> '. $objet->getFirstname() . ' '. $objet->getSurname(). '</option>';
+                echo  '<option value="' . $object . '"> ' . $objet->getFirstname() . ' ' . $objet->getSurname() . '</option>';
             }
         }
         ?>
@@ -46,5 +46,5 @@
 
 <br/><br/><br/><br/>
 
-<hr width="65%">
-<hr width="65%">
+<hr>
+<hr>

@@ -4,7 +4,6 @@
     ob_start();
 ?>
 
-<a class="titre" href="index.php"><h1>SIO ROULETTE</h1></a>
 <br/><br/>
 <!--             -->
 <!--  New view   -->

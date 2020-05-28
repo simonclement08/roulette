@@ -15,9 +15,9 @@ if (isset($_POST['add'])) {
 	$donnees['surname'] = $_POST['addnom'];
 	$donnees['firstname'] = $_POST['addprenom'];
 	$donnees['class'] = $_POST['addclasse'];
-	$donnees['bool'] = 0;
+	$donnees['bool'] = false;
 	$donnees['passage'] = 0;
-	$donnees['absence'] = NULL;
+	$donnees['absence'] = false;
 	$donnees['noteaddition'] = NULL;
 	$donnees['notetotal'] = NULL;
 	$donnees['average'] = NULL;
@@ -36,7 +36,7 @@ if (isset($_POST['del'])) {
 
 //TRAITEMENT FICHIER CLASSE
 
-if(!empty($_POST['upload'])) {																// Verifie si le formulaire est envoyé
+if(isset($_POST['upload'])) {																// Verifie si le formulaire est envoyé
 
 	$tmp_file = $_FILES['import']['tmp_name']; 													// Recup du nom du fichier
 	$file = $_FILES['import']['name'];		  													// Recup du nom et de l'extension du fichier
@@ -56,12 +56,9 @@ if(!empty($_POST['upload'])) {																// Verifie si le formulaire est en
 			$donnees['surname'] = $data[0];
 			$donnees['firstname'] = $data[1];
 			$donnees['class'] = $data[2];
-			$donnees['bool'] = 0;
+			$donnees['bool'] = false;
 			$donnees['passage'] = 0;
-			$donnees['absence'] = NULL;
-			$donnees['noteaddition'] = NULL;
-			$donnees['notetotal'] = NULL;
-			$donnees['average'] = NULL;
+			$donnees['absence'] = false;
 			$object = new Student($donnees);
 			$manager->add($object);
 		}
@@ -72,12 +69,12 @@ if(!empty($_POST['upload'])) {																// Verifie si le formulaire est en
 	}
 }
 
-if(!empty($_POST['classup'])) {
+if(isset($_POST['classup'])) {
 	$manager->deleteClasse($_POST['supp_classe']);
-	echo '<h4 style="color:green;">La classe a bien été supprimée de la BDD.</h4>';
+	echo '<h4 class="exemple">La classe a bien été supprimée de la BDD.</h4>';
 }
 require 'src/v/changeView.php';
-if($test && !isset($_POST['1']) && !isset($_POST['autofeed'])){
+if($test && empty($_POST['1']) && empty($_POST['autofeed'])){
 	require 'src/v/ajoutClasseView.php';
 }
 if(isset($_POST['1']) || isset($_POST['autofeed'])){	
@@ -86,7 +83,7 @@ if(isset($_POST['1']) || isset($_POST['autofeed'])){
 if(isset($_POST['2']) && $test === false || isset($_POST['add'])){
 	require 'src/v/ajoutEtudiantView.php';
 }
-if(isset($_POST['3']) && $test === false || !empty($_POST['choix'])){
+if(isset($_POST['3']) && $test === false || isset($_POST['choix'])){
 	require 'src/v/supprEtudiantView.php';
 }
 if(isset($_POST['4']) && $test === false){
