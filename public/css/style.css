@@ -32,6 +32,12 @@ button:hover, .active{
 	right: 20%;
 }
 
+.button_back{
+	position: absolute;
+	top: 25px;
+	left: 20%;
+}
+
 .button_menu{
 	margin-left: 100px;
 	margin-right: 100px;
@@ -40,6 +46,21 @@ button:hover, .active{
 .img_menu{
 	height: 50px;
 	width: auto;
+}
+
+.menu_setting{
+	margin: 20px;
+	padding: 10px;
+	width: 10%;
+}
+
+.content{
+	width: 60%;
+	margin: auto;
+}
+
+.content p:nth-child(n), h3:nth-child(n){
+	text-align: left;
 }
 
 table{
@@ -67,7 +88,7 @@ td {
 	width: 20%;
 }
 
-select{
+select,option{
 	padding: 5px;
 	margin: 5px;
 	width: 150px;
@@ -76,6 +97,11 @@ select{
 .warning{
 	color: red;
 	padding: 5px;
+}
+
+.valid{
+	color:rgb(160, 255, 0);
+	position : relative;
 }
 
 input {
@@ -123,11 +149,19 @@ input {
 	text-decoration: line-through;
 }
 
-.exemple{
-	color: green;
-	position : relative;
-}
-
 .format{
 	text-indent : 20px;
+}
+
+.add_input{
+	position: relative;
+	bottom: 55px;
+}
+
+.ldap_td{
+	width: 5%;
+}
+
+.ldap_input{
+	text-align: left;
 }

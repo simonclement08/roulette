@@ -4,6 +4,7 @@ class Student{
     private $_surname;
     private $_firstname;
     private $_class;
+    private $_ldap;
     private $_bool;
     private $_passage;
     private $_absence;
@@ -41,6 +42,10 @@ class Student{
     
     public function getClass(){
         return  $this->_class;
+    }
+
+    public function getLdap(){
+        return  $this->_ldap;
     }
     
     public function getBool(){
@@ -88,6 +93,12 @@ class Student{
     public function setClass($class){
         if ($class !== ""){
             $this->_class = $class;
+        }
+    }
+
+    public function setLdap(bool $ldap){
+        if (is_bool($ldap)){
+            $this->_ldap = $ldap;
         }
     }
 

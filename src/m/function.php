@@ -2,7 +2,7 @@
 
 function autofeed($manager,$datafeed){
 	$manager->insertdata($datafeed);
-	echo "<h4 class='exemple'>Les exemples ont bien été ajoutés</h4>";
+	$_POST['message'] = "<h4 class='valid'>Les exemples ont bien été ajoutés</h4>";
 }
 
 function Tirer($manager, $classe,$id){

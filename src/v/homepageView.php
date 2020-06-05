@@ -16,8 +16,9 @@
 				// on affiche la liste des différentes classes
 				echo "<option name='classe_eleve' value=".$element['class'].">".$element['class']."</option>";	//Affichage des classes dans un menu déroulant
 			}
-
-			$_SESSION['select_classe'] = $_POST['select_classe'];		//On définit cette variable pour simplifier le code plus tard
+			if(isset($_POST['select_classe'])){
+				$_SESSION['select_classe'] = $_POST['select_classe'];		//On définit cette variable pour simplifier le code plus tard
+			}
 		?>
 	</select>
 	
@@ -126,7 +127,7 @@ if(isset($_POST['hand'])){
 	echo "<p>Il reste <b>" . $nb2 . "</b> étudiants à passer sur <b>" . $nb . "</b> dont <b>" . $nb3 . "</b> noté ABS<br /><p>";
 
 	if($nb2 - $nb3 === 0){
-		echo "<p>Tous les étudiants ont été tirés au sorts, veuillez réinitialiser les passages dans l'onglet prévu a cet effet";
+		echo "<div class='content'><p>Tous les étudiants ont été tirés au sorts, veuillez réinitialiser les passages dans l'onglet prévu a cet effet</div>";
 	}
 
 
@@ -163,7 +164,7 @@ if(isset($_POST['hand'])){
 	$stop = 0;
 	while ($donnees = $select->fetch(PDO::FETCH_BOTH)){
 		if($stop === 0){
-			echo "<p> Liste des personnes précédemment tirée aux sorts et notée absent (à faire en priorité dès leur retour) :<br>";
+			echo "<div class='content'><p> Liste des personnes précédemment tirée aux sorts et notée absent (à faire en priorité dès leur retour) :<p></div><br>";
 			echo "<table>";
 		}
 		$stop = 1;
@@ -179,7 +180,9 @@ if(isset($_POST['hand'])){
 	}
 	?>
 	</table>
-	<p>Synthèse liste des étudiants :
+	<div class="content">
+		<p>Synthèse liste des étudiants :</p>
+	</div>
 	<?php
 	$liste = $manager->getDb("surname, firstname, bool, absence","class='". $_SESSION['select_classe'] . "'","bool,absence");
 	echo "<table class='table'>";
@@ -202,32 +205,32 @@ if(isset($_POST['hand'])){
 if(isset($_POST['reset'])){
 	?>
 	<form method="POST">
-		<input type="hidden" name="reset">
-		<input type="hidden" value=<?=$classe?> name="select_classe">
-		<label>Réinitialiser les passages (tous les étudiants peuvent de nouveau être tiré au sort)</label><br/>
-		<input type="submit" value="Valider" name="Resetpass"><br/><br/>
-		<label>Réinitialiser les passages + les notes</label><br/>
+		<div class='content'>
+			<input type="hidden" name="reset">
+			<input type="hidden" value=<?=$classe?> name="select_classe">
+			<p>Réinitialiser les passages (tous les étudiants peuvent de nouveau être tiré au sort)</p>
+			<input type="submit" value="Valider" name="Resetpass">
+			<p>Réinitialiser les passages + les notes</p>
 		<?php
 		if(isset($_POST['confirm'])){
-			echo '<label>Voulez vous vraiment réinitialiser toutes les données ?</label>';
+			echo '<p>Voulez vous vraiment réinitialiser toutes les données ?</p>';
 			echo '<input type="submit" value="Oui" name="Resetall">';
 			echo '<input type="submit" value="Non">';
 		}
 		else{
 			echo '<input type="submit" value="Valider" name="confirm">';
 		}
+		echo '</div>';
 	echo "</form>";
 
 	if (isset($_POST['Resetpass'])) {
-		echo "<p>Les passages ont bien été réinitialiser";
+		echo "<p>Les passages ont bien été réinitialiser</p>";
 	}
 	if (isset($_POST['Resetall'])) {
-		echo "<p>Les passages et les notes ont bien été réinitialiser";
+		echo "<p>Les passages et les notes ont bien été réinitialiser</p>";
 	}
 }
 
-?>
-<?php
 $content = ob_get_clean();
 
 require 'src/v/template.php';

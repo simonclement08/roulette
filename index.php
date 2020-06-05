@@ -14,7 +14,7 @@
 	$test = $manager->getDb('*');
 	$count = 0;
 	foreach($test as $test){
-		$count = $count + 1;
+		$count++;
 	}
 	if($count === 0) {
 		$test = true;
