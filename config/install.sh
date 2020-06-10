@@ -8,7 +8,7 @@ read -p "Press enter to continue or ctrl+c to quit"
 echo -e "\nEnter your project name"
 read name
 
-echo -e "\nChoose your OS [0]:\n0: LAMP\n1: MAMP"
+echo -e "\nChoose your OS [0]:\n0: LAMP\n1: MAMP\n2: AMPPS"
 read os
 # Set default value
 os=${os:-0}
@@ -43,6 +43,16 @@ elif [ $os -eq 1 ]; then
 	pwd="root"
 
 	MYSQL="/Applications/MAMP/Library/bin/mysql --host=$host -u$user -p$pwd"
+	$MYSQL -e "DROP DATABASE IF EXISTS $name;"
+	$MYSQL -e "CREATE DATABASE IF NOT EXISTS $name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
+	$MYSQL $name < $name.sql
+
+elif [ $os -eq 2 ]; then
+	host="localhost"
+	user="root"
+	pwd="mysql"
+
+	MYSQL="/Applications/Ampps/mysql/bin/mysql --host=$host -u$user -p$pwd"
 	$MYSQL -e "DROP DATABASE IF EXISTS $name;"
 	$MYSQL -e "CREATE DATABASE IF NOT EXISTS $name CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;"
 	$MYSQL $name < $name.sql
@@ -127,6 +137,9 @@ EOF
 
 elif [ $os -eq 1 ]; then
 	echo -e "\nNo configuration needed"
+
+elif [ $os -eq 2 ]; then
+	echo -e "\nNo configuration needed"
 fi
 
 ##########
@@ -142,6 +155,9 @@ if [ $os -eq 0 ]; then
 	find /var/www/$name -type f -exec chmod 640 {} \;
 
 elif [ $os -eq 1 ]; then
+	echo -e "\nNo configuration needed"
+
+elif [ $os -eq 2 ]; then
 	echo -e "\nNo configuration needed"
 fi
 

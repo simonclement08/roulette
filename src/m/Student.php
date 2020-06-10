@@ -4,6 +4,7 @@ class Student{
     private $_surname;
     private $_firstname;
     private $_class;
+    private $_ldap;
     private $_bool;
     private $_passage;
     private $_absence;
@@ -41,6 +42,10 @@ class Student{
     
     public function getClass(){
         return  $this->_class;
+    }
+
+    public function getLdap(){
+        return  $this->_ldap;
     }
     
     public function getBool(){
@@ -91,8 +96,14 @@ class Student{
         }
     }
 
-    public function setBool(int $bool){
-        if (is_int($bool)){
+    public function setLdap(bool $ldap){
+        if (is_bool($ldap)){
+            $this->_ldap = $ldap;
+        }
+    }
+
+    public function setBool(bool $bool){
+        if (is_bool($bool)){
             $this->_bool = $bool;
         }
     }
@@ -103,8 +114,8 @@ class Student{
         }
     }
 
-    public function setAbsence($absence){
-        if (is_int($absence) or NULL){
+    public function setAbsence(bool $absence){
+        if (is_bool($absence)){
             $this->_absence = $absence;
         }
     }
